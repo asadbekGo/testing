@@ -26,6 +26,7 @@ func TestFilm(t *testing.T) {
 			deleteFilm(t, id)
 		}()
 
+		s++
 	}
 
 	wg.Wait()

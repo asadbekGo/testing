@@ -63,7 +63,7 @@ func TestGetByIDActor(t *testing.T) {
 		{
 			Name: "Case 1",
 			Input: &models.ActorPrimarKey{
-				Id: "33c151fe-2445-4b89-954a-a0cd715af9e2",
+				Id: "33c151fe-2445-4b89-954a-a0cd715af9e4",
 			},
 			Output: &models.Actor{
 				Id:         "33c151fe-2445-4b89-954a-a0cd715af9e2",
@@ -79,7 +79,9 @@ func TestGetByIDActor(t *testing.T) {
 
 			actor, err := actorTestRepo.GetByPKey(context.Background(), test.Input)
 
-			if test.WantErr {
+			// if err == pgx.ErrNoRows {}
+
+			if err != nil {
 				t.Errorf("%s: got: %v", test.Name, err)
 				return
 			}

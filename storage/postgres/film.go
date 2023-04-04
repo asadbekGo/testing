@@ -96,6 +96,8 @@ func (f *FilmRepo) GetByPKey(ctx context.Context, pkey *models.FilmPrimarKey) (*
 		return nil, err
 	}
 
+	_, err = f.db.Query(ctx, "SELECT now()")
+
 	return &models.Film{
 		Id:          id.String,
 		Title:       title.String,
